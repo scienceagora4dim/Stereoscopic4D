@@ -7,6 +7,7 @@ namespace Stereoscopic4D {
 	/// <summary>
 	/// This class extends GameObject to 4D transform
 	/// </summary>
+	[DisallowMultipleComponent]
 	public class Transform4D : MonoBehaviour {
 
 		/// <summary>
