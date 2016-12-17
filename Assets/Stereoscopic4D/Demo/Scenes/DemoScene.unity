@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 1781223257}
   - component: {fileID: 1781223256}
   - component: {fileID: 1781223254}
+  - component: {fileID: 1781223255}
   m_Layer: 0
   m_Name: Tesseract
   m_TagString: Untagged
@@ -289,6 +290,21 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1781223255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1781223253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fde0f66aba8f4516bfb91dfb9522f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  w: 4.77
+  xz: 0
+  yz: 0
+  xy: 0
 --- !u!33 &1781223256
 MeshFilter:
   m_ObjectHideFlags: 0
