@@ -126,13 +126,13 @@ Material:
       second: 0.02
     - first:
         name: _RotationXY
-      second: 0
+      second: 224.6629
     - first:
         name: _RotationXZ
-      second: 0
+      second: 13.258148
     - first:
         name: _RotationYZ
-      second: 0
+      second: 37.27947
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -166,7 +166,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _Rotation
-      second: {r: -0, g: 0, b: 0, a: 0}
+      second: {r: 68.92178, g: 46.17072, b: 0.4903365, a: 0}
     - first:
         name: _Scale
       second: {r: 1, g: 1, b: 1, a: 1}
