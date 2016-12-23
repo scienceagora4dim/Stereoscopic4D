@@ -65,7 +65,7 @@
 				float values[5];
 			};
 
-			/// 5x5単位行列
+			/// 5x5 identity matrix
 			static const float5x5 IDENTITY_5x5 = { {
 				{ 1.0f, 0.0f, 0.0f, 0.0f, 0.0f },
 				{ 0.0f, 1.0f, 0.0f, 0.0f, 0.0f },
@@ -74,7 +74,7 @@
 				{ 0.0f, 0.0f, 0.0f, 0.0f, 1.0f },
 			} };
 
-			/// 5x5ゼロ行列
+			/// 5x5 zero matrix
 			static const float5x5 ZERO_5x5 = { {
 				{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
 				{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
@@ -83,24 +83,24 @@
 				{ 0.0f, 0.0f, 0.0f, 0.0f, 0.0f }
 			} };
 
-			/// ゼロベクトル
+			/// zero vector
 			static const float5 ZERO_5x1 = { {0.0f, 0.0f, 0.0f, 0.0f, 0.0f} };
 			static const float4 ONE_4x1 = float4(1.0f, 1.0f, 1.0f, 1.0f);
 
-			/// 5次元ベクトルに変換する
+			/// to 5D vector from 4D vector 
 			float5 toFloat5(const float4 v)
 			{
 				const float5 result = { {v.x, v.y, v.z, v.w, 1.0f} };
 				return result;
 			}
 
-			/// 4次元ベクトルに変換する
+			/// to 4D vector from 5D vector
 			float4 toFloat4(const float5 v)
 			{
 				return float4(v.values[0], v.values[1], v.values[2], v.values[3]);
 			}
 
-			/// 5x5行列の乗算
+			/// multiply 5D matricies
 			float5x5 mul5x5(const float5x5 lhs, const float5x5 rhs)
 			{
 				float5x5 result;
@@ -119,7 +119,7 @@
 				return result;
 			}
 
-			/// ベクトルと5x5行列の乗算
+			/// multiply 5D vector and matrix
 			float5 mul1x5(const float5 lhs, const float5x5 rhs)
 			{
 				float5 result;
@@ -133,7 +133,7 @@
 				return result;
 			}
 
-			/// 5x5行列とベクトルの乗算
+			/// multiply 5D matrix and vector
 			float5 mul5x1(float5x5 lhs, float5 rhs)
 			{
 				float5 result = ZERO_5x1;
@@ -147,7 +147,7 @@
 				return result;
 			}
 
-			/// スケーリング行列を生成する
+			/// make scaling matrix
 			float5x5 makeScale(float4 value)
 			{
 				const float5x5 result =
@@ -161,7 +161,7 @@
 				return result;
 			}
 
-			/// 平行移動行列を生成する
+			/// make translation matrix
 			float5x5 makeTranslation(float4 value)
 			{
 				const float5x5 result =
@@ -175,7 +175,7 @@
 				return result;
 			}
 
-			/// ZW平面回転行列を生成する(XY座標が変化)
+			/// make rotation matrix on ZW axis.
 			float5x5 makeRotateZW(float theta)
 			{
 				float c = cos(theta);
@@ -191,7 +191,7 @@
 				return result;
 			}
 
-			/// YW平面回転行列を生成する(XZ座標が変化)
+			/// make rotation matrix on YW axis.
 			float5x5 makeRotateYW(float theta)
 			{
 				float c = cos(theta);
@@ -207,7 +207,7 @@
 				return result;
 			}
 
-			/// YZ平面回転行列を生成する(XW座標が変化)
+			/// make rotation matrix on YZ axis.
 			float5x5 makeRotateYZ(float theta)
 			{
 				float c = cos(theta);
@@ -223,7 +223,7 @@
 				return result;
 			}
 
-			/// XW平面回転行列を生成する(YZ座標が変化)
+			/// make rotation matrix on XW axis.
 			float5x5 makeRotateXW(float theta)
 			{
 				float c = cos(theta);
@@ -239,7 +239,7 @@
 				return result;
 			}
 
-			/// XZ平面回転行列を生成する(YW座標が変化)
+			/// make rotation matrix on XZ axis.
 			float5x5 makeRotateXZ(float theta)
 			{
 				float c = cos(theta);
@@ -255,7 +255,7 @@
 				return result;
 			}
 
-			/// XY平面回転行列を生成する(ZW座標が変化)
+			/// make rotation matrix on XY axis.
 			float5x5 makeRotateXY(float theta)
 			{
 				float c = cos(theta);
@@ -271,7 +271,7 @@
 				return result;
 			}
 
-			/// モデル行列の生成
+			/// make Model matrix.
 			float5x5 makeModelMatrix(
 					float4 scale,
 					float4 rotation,
@@ -280,7 +280,7 @@
 					float rotationXY,
 					float4 translation)
 			{
-				const float5x5 xw = makeRotateXW(radians(-rotation.x));
+				const float5x5 xw = makeRotateXW(radians(-rotation.x)); // reverse x and y rotation.
 				const float5x5 yw = makeRotateYW(radians(-rotation.y));
 				const float5x5 zw = makeRotateZW(radians( rotation.z));
 				const float5x5 xz = makeRotateXZ(radians( rotationXZ));
@@ -292,17 +292,17 @@
 				const float5x5 r4 = mul5x5(yz, r3);
 				const float5x5 rot = mul5x5(xy, r4);
 				const float5x5 s = makeScale(scale);
-				const float4 t = float4(translation.x, translation.y, -translation.z, translation.w); // z軸は反転する。(前が負の方向)
+				const float4 t = float4(translation.x, translation.y, -translation.z, translation.w); // reverse z axis
 				const float5x5 tr = makeTranslation(t);
 				const float5x5 rots = mul5x5(rot, s);
 				return mul5x5(tr, rots);
 			}
 
-			// モデル行列
+			// Model matrix.
 			static const float5x5 M = makeModelMatrix(
 				_Scale, _Rotation, _RotationXZ, _RotationYZ, _RotationXY, _Position);
 
-			/// ビュー行列の生成
+			/// make View matrix.
 			float5x5 makeViewMatrix(
 					float4 rotation,
 					float rotationXZ,
@@ -314,9 +314,9 @@
 					float squint,
 					int enable4d)
 			{
-				const float4 t = float4(-translation.x, -translation.y, translation.z, -translation.w); // z軸は反転する。(前が負の方向)
+				const float4 t = float4(-translation.x, -translation.y, translation.z, -translation.w); // reverse z axis
 				const float5x5 tr = makeTranslation(t);
-				const float5x5 xw = makeRotateXW(radians( rotation.x));
+				const float5x5 xw = makeRotateXW(radians( rotation.x)); // reverse x and y rotation.
 				const float5x5 yw = makeRotateYW(radians( rotation.y));
 				const float5x5 zw = makeRotateZW(radians(-rotation.z));
 				const float5x5 xz = makeRotateXZ(radians(-rotationXZ));
@@ -327,17 +327,14 @@
 				const float5x5 r3 = mul5x5(yw, r2);
 				const float5x5 r4 = mul5x5(xw, r3);
 				const float5x5 rot = mul5x5(zw, r4);
-				const float5x5 worldView = mul5x5(rot, tr); // 移動してから回転
-								
-				// 右目の場合 tan = +sep / convで atan > 0 になる。
-				// 左目の場合 tan = -sep / convで atan < 0 になる。
-				// 眼球を回転させる代わりに世界を逆回転させるため、符号が反転したままでOK
+				const float5x5 worldView = mul5x5(rot, tr); // move before rotation.
+
+				// rotation by stereoscopic views
 				const float eyeRad = atan(separation / convergence);
 
-				// 視差分の移動
 				if (enable4d)
 				{
-					// 4D描画
+					// 4D stereoscopic!
 					const float4 eyeT = float4(-separation, 0.0f, 0.0f, 0.0f);
 					const float5x5 eyeTr = makeTranslation(eyeT);
 					const float5x5 eyeRotYW = makeRotateYW(eyeRad);
@@ -348,7 +345,7 @@
 				}
 				else
 				{
-					// 通常の3D描画
+					// 3D stereoscopic
 					const float4 eyeT = float4(-separation, 0.0f, 0.0f, 0.0f);
 					const float5x5 eyeTr = makeTranslation(eyeT);
 					const float5x5 eyeRot = makeRotateYW(eyeRad);
@@ -357,7 +354,7 @@
 				}
 			}
 
-			// カメラ行列
+			// View matrix
 			static const float5x5 V = makeViewMatrix(
 				_CameraRotation,
 				_CameraRotationXZ,
@@ -369,11 +366,7 @@
 				_CameraSquint,
 				_Enable4DStereo);
 
-			/**
-			 *	頂点データ構造体
-			 *
-			 *	スクリプトで設定したvertices・colors・uvの値が設定される。
-			 */
+			/// vertex data.
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -381,24 +374,14 @@
 				float2 uv : TEXCOORD0;
 			};
 
-			/**
-			 *	頂点シェーダーからフラグメントシェーダーに渡す中間データの構造体
-			 *
-			 *	フラグメントシェーダーでは、頂点からの距離に応じて補完された値が設定される。
-			 */
+			/// fragment shader input.
 			struct v2f
 			{
 				float4 vertex : SV_POSITION;
 				float4 color : COLOR0;
 			};
 
-			/**
-			 *	頂点シェーダー
-			 *
-			 *	スクリプトで設定したvertices・colors・uvの値が渡される。
-			 *	頂点毎に呼び出される。
-			 *	頂点を座標変換し、フラグメントシェーダーに渡す。
-			 */
+			/// vertex shader function.
 			v2f vert(appdata v)
 			{
 				v2f o;
@@ -413,15 +396,9 @@
 				return o;
 			}
 			
-			/**
-			 *	フラグメントシェーダー
-			 *
-			 *	頂点シェーダーの出力結果をもとに、画素毎の色の計算を行う。
-			 *	頂点シェーダーの出力結果を画素毎に線型補完した値が渡される。
-			 */
+			/// fragment shader function.
 			float4 frag(v2f i) : SV_Target
 			{
-				// 頂点色をそのまま返す。
 				return i.color;
 			}
 			ENDCG
