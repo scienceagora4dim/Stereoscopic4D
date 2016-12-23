@@ -90,7 +90,7 @@ Material:
       second: 10
     - first:
         name: _CameraStereoSeparation
-      second: 0.022
+      second: -0.022
     - first:
         name: _Cutoff
       second: 0.5
@@ -126,13 +126,13 @@ Material:
       second: 0.02
     - first:
         name: _RotationXY
-      second: -27.9
+      second: 0
     - first:
         name: _RotationXZ
-      second: 12.08
+      second: 0
     - first:
         name: _RotationYZ
-      second: 14.57
+      second: 0
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -163,10 +163,10 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _Position
-      second: {r: 0, g: 0, b: 0, a: -54.78}
+      second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _Rotation
-      second: {r: 27.259993, g: 37.899998, b: 0, a: 0}
+      second: {r: -0, g: 0, b: 0, a: 0}
     - first:
         name: _Scale
-      second: {r: 1, g: 1, b: 1, a: 1.84}
+      second: {r: 1, g: 1, b: 1, a: 1}

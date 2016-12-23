@@ -341,9 +341,9 @@
 					const float4 eyeT = float4(-separation, 0.0f, 0.0f, 0.0f);
 					const float5x5 eyeTr = makeTranslation(eyeT);
 					const float5x5 eyeRotYW = makeRotateYW(eyeRad);
-					const float5x5 eyeRotYZ = makeRotateYZ(0.01 * eyeRad * squint);
-					const float5x5 e2 = mul5x5(eyeRotYW,eyeTr);
-					const float5x5 e3 = mul5x5(eyeRotYZ,e2);
+					const float5x5 eyeRotYZ = makeRotateYZ(eyeRad * squint);
+					const float5x5 e2 = mul5x5(eyeRotYW, eyeTr);
+					const float5x5 e3 = mul5x5(eyeRotYZ, e2);
 					return mul5x5(e3, worldView);
 				}
 				else

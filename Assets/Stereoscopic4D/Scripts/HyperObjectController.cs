@@ -111,12 +111,18 @@ namespace Stereoscopic4D {
 			bool left = (StereoTargetEyeMask.Left == cam.stereoTargetEye);
 			float stereoSeparation = left ? -cam.stereoSeparation : cam.stereoSeparation;
 			float stereoConvergence = cam.stereoConvergence;
-			float squint = 1.0f;
-			int enable4DStereo = 1;
 			hyperObjectMaterial.SetFloat (cameraStereoSeparation_, stereoSeparation);
 			hyperObjectMaterial.SetFloat (cameraStereoConvergence_, stereoConvergence);
+
+			Camera4DController cam4d = cam.gameObject.GetComponentInParent<Camera4DController> ();
+			float squint = 0.0f;
+			bool enable4DStereo = false;
+			if (cam4d != null) {
+				squint = cam4d.squintFactor;
+				enable4DStereo = cam4d.enable4DStereoscopic;
+			}
 			hyperObjectMaterial.SetFloat (cameraSquint_, squint);
-			hyperObjectMaterial.SetInt (enable4DStereo_, enable4DStereo);
+			hyperObjectMaterial.SetInt (enable4DStereo_, enable4DStereo ? 1 : 0);
 		}
 	}
 }
