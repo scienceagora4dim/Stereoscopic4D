@@ -15,6 +15,13 @@ namespace Stereoscopic4D {
 		/// </summary>
 		public float w;
 
+		[Header("Scale with W")]
+
+		/// <summary>
+		/// The scale w.
+		/// </summary>
+		public float scaleW;
+
 		[Header("Rotation with W")]
 
 		/// <summary>
@@ -44,6 +51,31 @@ namespace Stereoscopic4D {
 			set {
 				transform.position = new Vector3 (value.x, value.y, value.z);
 				w = value.w;
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the 4D scale.
+		/// </summary>
+		/// <value>The 4D scale.</value>
+		public Vector4 scale {
+			get {
+				Vector3 scale = transform.localScale;
+				return new Vector4 (scale.x, scale.y, scale.z, scaleW);
+			}
+			set {
+				transform.localScale = new Vector3 (value.x, value.y, value.z);
+				scaleW = value.w;
+			}
+		}
+
+		/// <summary>
+		/// Gets the euler angles 3D.
+		/// </summary>
+		/// <value>The euler angles 3D.</value>
+		public Vector3 eulerAngles3D {
+			get {
+				return transform.localRotation.eulerAngles;
 			}
 		}
 
