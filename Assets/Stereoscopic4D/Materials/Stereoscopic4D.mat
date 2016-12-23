@@ -129,10 +129,10 @@ Material:
       second: 0
     - first:
         name: _RotationXZ
-      second: 0
+      second: 96.2
     - first:
         name: _RotationYZ
-      second: 0
+      second: -291.9
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -151,7 +151,7 @@ Material:
     m_Colors:
     - first:
         name: _CameraPosition
-      second: {r: 0, g: 1, b: -10, a: 0}
+      second: {r: 0, g: 1, b: -5, a: 0}
     - first:
         name: _CameraRotation
       second: {r: -0, g: 0, b: 0, a: 0}
@@ -163,10 +163,10 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _Position
-      second: {r: 0, g: 0, b: 0, a: 4.77}
+      second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _Rotation
-      second: {r: -0, g: 0, b: 0, a: 0}
+      second: {r: 76.10003, g: 145.6, b: 180, a: 0}
     - first:
         name: _Scale
-      second: {r: 1, g: 1, b: 1, a: 0}
+      second: {r: 1, g: 1, b: 1, a: 1}

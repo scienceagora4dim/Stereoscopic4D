@@ -13,31 +13,31 @@ namespace Stereoscopic4D {
 		/// <summary>
 		/// w position.
 		/// </summary>
-		public float w;
+		public float w = 0.0f;
 
 		[Header("Scale with W")]
 
 		/// <summary>
 		/// The scale w.
 		/// </summary>
-		public float scaleW;
+		public float scaleW = 1.0f;
 
 		[Header("Rotation with W")]
 
 		/// <summary>
 		/// The XZ rotation.
 		/// </summary>
-		public float xz;
+		public float xz = 0.0f;
 
 		/// <summary>
 		/// The YZ rotation.
 		/// </summary>
-		public float yz;
+		public float yz = 0.0f;
 
 		/// <summary>
 		/// The XY rotation.
 		/// </summary>
-		public float xy;
+		public float xy = 0.0f;
 
 		/// <summary>
 		/// Gets or sets the 4D position.

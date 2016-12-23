@@ -10,7 +10,7 @@
 		_RotationXY ("Rotation XY", Float) = 0.0
 
 		_CameraPosition ("Camera Position", Vector) = (0, 0, 0, 0)
-		_CameraRotation ("Rotation", Vector) = (0, 0, 0)
+		_CameraRotation ("Camera Rotation", Vector) = (0, 0, 0)
 		_CameraRotationXZ ("Camera Rotation XZ", Float) = 0.0
 		_CameraRotationYZ ("Camera Rotation YZ", Float) = 0.0
 		_CameraRotationXY ("Camera Rotation XY", Float) = 0.0
@@ -280,12 +280,12 @@
 					float rotationXY,
 					float4 translation)
 			{
-				const float5x5 xw = makeRotateXW(radians(rotation.x));
-				const float5x5 yw = makeRotateYW(radians(rotation.y));
-				const float5x5 zw = makeRotateZW(radians(rotation.z));
-				const float5x5 xz = makeRotateXZ(radians(rotationXZ));
-				const float5x5 yz = makeRotateYZ(radians(rotationYZ));
-				const float5x5 xy = makeRotateXY(radians(rotationXY));
+				const float5x5 xw = makeRotateXW(radians(-rotation.x));
+				const float5x5 yw = makeRotateYW(radians(-rotation.y));
+				const float5x5 zw = makeRotateZW(radians( rotation.z));
+				const float5x5 xz = makeRotateXZ(radians( rotationXZ));
+				const float5x5 yz = makeRotateYZ(radians( rotationYZ));
+				const float5x5 xy = makeRotateXY(radians( rotationXY));
 				const float5x5 r1 = mul5x5(xw, zw);
 				const float5x5 r2 = mul5x5(yw, r1);
 				const float5x5 r3 = mul5x5(xz, r2);

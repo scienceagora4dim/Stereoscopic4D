@@ -81,7 +81,6 @@ namespace Stereoscopic4D {
 			Vector2[] uvarray = new Vector2[vertices.Length];
 			Color[] carray = new Color[vertices.Length];
 
-
 			for (int i = 0; i < vertices.Length; ++i) {
 				Vector4 pos = vertices [i].position;
 				Color color = vertices [i].color;
