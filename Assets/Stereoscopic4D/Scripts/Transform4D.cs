@@ -94,5 +94,19 @@ namespace Stereoscopic4D {
 				xy = angles.z;
 			}
 		}
+
+		/// <summary>
+		/// 4D Rotate.
+		/// </summary>
+		/// <param name="dxz">delta xz.</param>
+		/// <param name="dyz">delta yz.</param>
+		/// <param name="dxy">delta xy.</param>
+		public void Rotate4D(float dxz, float dyz, float dxy) {
+			Quaternion nextAngles = Quaternion.Euler (dxz, dyz, dxy) * Quaternion.Euler (xz, yz, xy);
+			Vector3 angles = nextAngles.eulerAngles;
+			xz = angles.x;
+			yz = angles.y;
+			xy = angles.z;
+		}
 	}
 }

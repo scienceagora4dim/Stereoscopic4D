@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Camera 4D controller.
-/// </summary>
-public class Camera4DController : MonoBehaviour {
+namespace Stereoscopic4D {
 
 	/// <summary>
-	/// The enable4 D stereoscopic flag.
+	/// Camera 4D controller.
 	/// </summary>
-	public bool enable4DStereoscopic = true;
+	public class Camera4DController : MonoBehaviour {
 
-	/// <summary>
-	/// The squint factor.
-	/// </summary>
-	public float squintFactor = 1.0f;
+		/// <summary>
+		/// The enable4 D stereoscopic flag.
+		/// </summary>
+		public bool enable4DStereoscopic = true;
+
+		/// <summary>
+		/// The squint factor.
+		/// </summary>
+		public float squintFactor = 1.0f;
+	}
 }
