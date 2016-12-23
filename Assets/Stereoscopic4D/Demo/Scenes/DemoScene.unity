@@ -273,7 +273,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2fd6dfde198ea4ff48507a8898464667, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   w: 4.77
+  scaleW: 0
   xz: 0
   yz: 0
   xy: 0
@@ -338,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hyperObjectJson: {fileID: 4900000, guid: ac74613761a8c4ccfbd80d4c5f68c4d1, type: 3}
+  hyperObjectMaterial: {fileID: 2100000, guid: 2fd6dfde198ea4ff48507a8898464667, type: 2}
 --- !u!1 &2098916467
 GameObject:
   m_ObjectHideFlags: 0

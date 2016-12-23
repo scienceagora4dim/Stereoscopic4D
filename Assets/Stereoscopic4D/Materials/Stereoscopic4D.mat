@@ -74,6 +74,24 @@ Material:
         name: _BumpScale
       second: 1
     - first:
+        name: _CameraRotationXY
+      second: 0
+    - first:
+        name: _CameraRotationXZ
+      second: 0
+    - first:
+        name: _CameraRotationYZ
+      second: 0
+    - first:
+        name: _CameraSquint
+      second: 1
+    - first:
+        name: _CameraStereoConvergence
+      second: 10
+    - first:
+        name: _CameraStereoSeparation
+      second: 0.022
+    - first:
         name: _Cutoff
       second: 0.5
     - first:
@@ -82,6 +100,9 @@ Material:
     - first:
         name: _DstBlend
       second: 0
+    - first:
+        name: _Enable4DStereo
+      second: 1
     - first:
         name: _GlossMapScale
       second: 1
@@ -104,6 +125,15 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
+        name: _RotationXY
+      second: 0
+    - first:
+        name: _RotationXZ
+      second: 0
+    - first:
+        name: _RotationYZ
+      second: 0
+    - first:
         name: _SmoothnessTextureChannel
       second: 0
     - first:
@@ -120,8 +150,23 @@ Material:
       second: 1
     m_Colors:
     - first:
+        name: _CameraPosition
+      second: {r: 0, g: 1, b: -10, a: 0}
+    - first:
+        name: _CameraRotation
+      second: {r: -0, g: 0, b: 0, a: 0}
+    - first:
         name: _Color
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _Position
+      second: {r: 0, g: 0, b: 0, a: 4.77}
+    - first:
+        name: _Rotation
+      second: {r: -0, g: 0, b: 0, a: 0}
+    - first:
+        name: _Scale
+      second: {r: 1, g: 1, b: 1, a: 0}
