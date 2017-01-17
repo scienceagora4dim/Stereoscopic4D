@@ -115,7 +115,7 @@ namespace Stereoscopic4D {
 			material.SetFloat (cameraStereoSeparation_, stereoSeparation);
 			material.SetFloat (cameraStereoConvergence_, stereoConvergence);
 
-			Camera4DController cam4d = cam.gameObject.GetComponentInParent<Camera4DController> ();
+			Camera4D cam4d = cam.gameObject.GetComponentInParent<Camera4D> ();
 			float squint = 0.0f;
 			bool enable4DStereo = false;
 			if (cam4d != null) {
