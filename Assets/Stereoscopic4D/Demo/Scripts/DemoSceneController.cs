@@ -40,7 +40,6 @@ namespace Stereoscopic4D.Demo {
 			targetObject.transform.Rotate (new Vector3(rThumb.y, -rThumb.x, 0.0f));
 			targetObject.Rotate4D (lThumb.y, -lThumb.x, 0.0f);
 			
-			Debug.Log(lIndex);
 			// Change squintFactor
 			if(lIndex > THRESH_SQUINT_CTRL){
 				if(camera4D.squintFactor <= THRESH_SQUINT){
