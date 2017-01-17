@@ -154,6 +154,12 @@ Transform:
   m_Father: {fileID: 2098916468}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &243503521 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114600646105331816, guid: 277e036d3c9a04dec8d35da9f460d157,
+    type: 2}
+  m_PrefabInternal: {fileID: 491710574}
+  m_Script: {fileID: 11500000, guid: a2f45d8052829405b9d9d5c2f5a0a2cf, type: 3}
 --- !u!114 &353201570 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114481172731416550, guid: d65055023b0b049ad9759e85e4ae670c,
@@ -197,12 +203,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4873686238880234, guid: 277e036d3c9a04dec8d35da9f460d157, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114600646105331816, guid: 277e036d3c9a04dec8d35da9f460d157,
         type: 2}
       propertyPath: squintFactor
-      value: -0.08
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 20203321807074314, guid: 277e036d3c9a04dec8d35da9f460d157,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 20174457791979610, guid: 277e036d3c9a04dec8d35da9f460d157,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 277e036d3c9a04dec8d35da9f460d157, type: 2}
@@ -302,4 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb729240e503450b98f0247eb5863ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera4D: {fileID: 243503521}
   targetObject: {fileID: 353201570}
+  RTouch: 2
+  LTouch: 1
