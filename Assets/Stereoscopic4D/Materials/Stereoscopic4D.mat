@@ -84,13 +84,13 @@ Material:
       second: 0
     - first:
         name: _CameraSquint
-      second: 1
+      second: -0.08
     - first:
         name: _CameraStereoConvergence
       second: 10
     - first:
         name: _CameraStereoSeparation
-      second: -0.022
+      second: 0.064
     - first:
         name: _Cutoff
       second: 0.5
@@ -126,13 +126,13 @@ Material:
       second: 0.02
     - first:
         name: _RotationXY
-      second: 224.6629
+      second: 27.772684
     - first:
         name: _RotationXZ
-      second: 13.258148
+      second: 351.66367
     - first:
         name: _RotationYZ
-      second: 37.27947
+      second: 21.734184
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -151,10 +151,10 @@ Material:
     m_Colors:
     - first:
         name: _CameraPosition
-      second: {r: 0, g: 1, b: -5, a: 0}
+      second: {r: -0.6354984, g: 0.35105324, b: -4.358606, a: 0}
     - first:
         name: _CameraRotation
-      second: {r: -0, g: 0, b: 0, a: 0}
+      second: {r: 24.863802, g: 94.50457, b: 158.83662, a: 0}
     - first:
         name: _Color
       second: {r: 1, g: 1, b: 1, a: 1}
@@ -166,7 +166,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _Rotation
-      second: {r: 68.92178, g: 46.17072, b: 0.4903365, a: 0}
+      second: {r: 293.69064, g: 283.67285, b: 9.271586, a: 0}
     - first:
         name: _Scale
       second: {r: 1, g: 1, b: 1, a: 1}
