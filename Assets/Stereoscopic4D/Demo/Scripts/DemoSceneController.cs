@@ -30,6 +30,14 @@ namespace Stereoscopic4D.Demo {
 			} else {
 				targetObject.transform.Rotate (new Vector3(v, -h, 0.0f));
 			}
+			if(Input.GetButton ("Jump")){
+				if(camera4D.squintFactor <= THRESH_SQUINT){
+					camera4D.squintFactor = Mathf.Min(camera4D.squintFactor + 3f, THRESH_SQUINT);				}
+			} else {
+				if(camera4D.squintFactor >= 0f){
+					camera4D.squintFactor = Mathf.Max(camera4D.squintFactor - 0.5f, 0f);
+				}
+			}
 
 			// Control via Oculus Touch
 			Vector2 rThumb = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, RTouch);
@@ -43,11 +51,11 @@ namespace Stereoscopic4D.Demo {
 			// Change squintFactor
 			if(lIndex > THRESH_SQUINT_CTRL){
 				if(camera4D.squintFactor <= THRESH_SQUINT){
-					camera4D.squintFactor += 0.5f * lIndex;
+					camera4D.squintFactor += 3f * lIndex;
 				}
 			}else{
 				if(camera4D.squintFactor >= 0f){
-					camera4D.squintFactor -= 0.5f;
+					//camera4D.squintFactor = Mathf.Max(camera4D.squintFactor - 0.5f, 0f);
 				}
 			}
 		}
