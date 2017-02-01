@@ -26,12 +26,13 @@
 			"RenderType"="Transparent"
 		}
 		LOD 100
+		// Disable the hidden face removal
 		ZWrite Off
 
 		Pass
 		{
-			Cull Off // enable double shaded
-			Blend SrcAlpha OneMinusSrcAlpha // enable alpha blending
+			Cull Off // Disable culling, all sides of faces are drawn
+			Blend SrcAlpha OneMinusSrcAlpha // Enable regular alpha blending
 
 			CGPROGRAM
 			#pragma vertex vert
@@ -85,22 +86,24 @@
 
 			/// zero vector
 			static const float5 ZERO_5x1 = { {0.0f, 0.0f, 0.0f, 0.0f, 0.0f} };
+			/// all-one vector
 			static const float4 ONE_4x1 = float4(1.0f, 1.0f, 1.0f, 1.0f);
 
-			/// to 5D vector from 4D vector 
+			/// Lift an affine 4D vector to a homogeneous 5D vector
 			float5 toFloat5(const float4 v)
 			{
 				const float5 result = { {v.x, v.y, v.z, v.w, 1.0f} };
 				return result;
 			}
 
-			/// to 4D vector from 5D vector
+			/// Project a homogeneous 5D vector to an affine 4D vector
 			float4 toFloat4(const float5 v)
 			{
-				return float4(v.values[0], v.values[1], v.values[2], v.values[3]);
+				return float4(v.values[0]/v.values[4], v.values[1]/v.values[4], v.values[2]/v.values[4], v.values[3]/v.values[4]);
+				///return float4(v.values[0], v.values[1], v.values[2], v.values[3]);
 			}
 
-			/// multiply 5D matricies
+			/// Multiplication of 5-by-5 matrices
 			float5x5 mul5x5(const float5x5 lhs, const float5x5 rhs)
 			{
 				float5x5 result;
@@ -119,7 +122,7 @@
 				return result;
 			}
 
-			/// multiply 5D vector and matrix
+			/// Right action of a 5-by-5 matrix on the 5-space
 			float5 mul1x5(const float5 lhs, const float5x5 rhs)
 			{
 				float5 result;
@@ -133,7 +136,7 @@
 				return result;
 			}
 
-			/// multiply 5D matrix and vector
+			/// Left action of a 5-by-5 matrix on the 5-space
 			float5 mul5x1(float5x5 lhs, float5 rhs)
 			{
 				float5 result = ZERO_5x1;
@@ -147,7 +150,7 @@
 				return result;
 			}
 
-			/// make scaling matrix
+			/// Make the scaling matrix
 			float5x5 makeScale(float4 value)
 			{
 				const float5x5 result =
@@ -161,7 +164,7 @@
 				return result;
 			}
 
-			/// make translation matrix
+			/// Make the translation matrix
 			float5x5 makeTranslation(float4 value)
 			{
 				const float5x5 result =
@@ -175,7 +178,7 @@
 				return result;
 			}
 
-			/// make rotation matrix on ZW axis.
+			/// Make the rotation matrix along ZW axis
 			float5x5 makeRotateZW(float theta)
 			{
 				float c = cos(theta);
@@ -191,7 +194,7 @@
 				return result;
 			}
 
-			/// make rotation matrix on YW axis.
+			/// Make the rotation matrix along YW axis
 			float5x5 makeRotateYW(float theta)
 			{
 				float c = cos(theta);
@@ -207,7 +210,7 @@
 				return result;
 			}
 
-			/// make rotation matrix on YZ axis.
+			/// Make the rotation matrix along YZ axis
 			float5x5 makeRotateYZ(float theta)
 			{
 				float c = cos(theta);
@@ -223,7 +226,7 @@
 				return result;
 			}
 
-			/// make rotation matrix on XW axis.
+			/// Make the rotation matrix along XW axis
 			float5x5 makeRotateXW(float theta)
 			{
 				float c = cos(theta);
@@ -239,7 +242,7 @@
 				return result;
 			}
 
-			/// make rotation matrix on XZ axis.
+			/// Make the rotation matrix along XZ axis
 			float5x5 makeRotateXZ(float theta)
 			{
 				float c = cos(theta);
@@ -255,7 +258,7 @@
 				return result;
 			}
 
-			/// make rotation matrix on XY axis.
+			/// Make the rotation matrix along XY axis
 			float5x5 makeRotateXY(float theta)
 			{
 				float c = cos(theta);
@@ -271,7 +274,7 @@
 				return result;
 			}
 
-			/// make Model matrix.
+			/// Make the Model matrix
 			float5x5 makeModelMatrix(
 					float4 scale,
 					float4 rotation,
@@ -280,7 +283,8 @@
 					float rotationXY,
 					float4 translation)
 			{
-				const float5x5 xw = makeRotateXW(radians(-rotation.x)); // reverse x and y rotation.
+				// Note the signs of x and y rotation
+				const float5x5 xw = makeRotateXW(radians(-rotation.x)); 
 				const float5x5 yw = makeRotateYW(radians(-rotation.y));
 				const float5x5 zw = makeRotateZW(radians( rotation.z));
 				const float5x5 xz = makeRotateXZ(radians( rotationXZ));
@@ -292,17 +296,18 @@
 				const float5x5 r4 = mul5x5(yz, r3);
 				const float5x5 rot = mul5x5(xy, r4);
 				const float5x5 s = makeScale(scale);
-				const float4 t = float4(translation.x, translation.y, -translation.z, translation.w); // reverse z axis
+				// Note the sign of the z-coordinate
+				const float4 t = float4(translation.x, translation.y, -translation.z, translation.w);
 				const float5x5 tr = makeTranslation(t);
 				const float5x5 rots = mul5x5(rot, s);
 				return mul5x5(tr, rots);
 			}
 
-			// Model matrix.
+			// The Model matrix
 			static const float5x5 M = makeModelMatrix(
 				_Scale, _Rotation, _RotationXZ, _RotationYZ, _RotationXY, _Position);
 
-			/// make View matrix.
+			/// Make the View matrix
 			float5x5 makeViewMatrix(
 					float4 rotation,
 					float rotationXZ,
@@ -314,9 +319,11 @@
 					float squint,
 					int enable4d)
 			{
-				const float4 t = float4(-translation.x, -translation.y, translation.z, -translation.w); // reverse z axis
+				// Note the sign of the z-coordinate
+				const float4 t = float4(-translation.x, -translation.y, translation.z, -translation.w);
 				const float5x5 tr = makeTranslation(t);
-				const float5x5 xw = makeRotateXW(radians( rotation.x)); // reverse x and y rotation.
+				// Note the signs of x and y rotation
+				const float5x5 xw = makeRotateXW(radians( rotation.x)); 
 				const float5x5 yw = makeRotateYW(radians( rotation.y));
 				const float5x5 zw = makeRotateZW(radians(-rotation.z));
 				const float5x5 xz = makeRotateXZ(radians(-rotationXZ));
@@ -326,10 +333,11 @@
 				const float5x5 r2 = mul5x5(xz, r1);
 				const float5x5 r3 = mul5x5(yw, r2);
 				const float5x5 r4 = mul5x5(xw, r3);
-				const float5x5 rot = mul5x5(zw, r4);
-				const float5x5 worldView = mul5x5(rot, tr); // move before rotation.
+				const float5x5 rot = mul5x5(zw, r4); 
+				// Rotation comes after the translation
+				const float5x5 worldView = mul5x5(rot, tr);
 
-				// rotation by stereoscopic views
+				// Rotation by stereoscopic views
 				const float eyeRad = atan(separation / convergence);
 
 				if (enable4d)
