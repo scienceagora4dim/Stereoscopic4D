@@ -32,7 +32,7 @@ namespace Stereoscopic4D.Demo {
 			}
 			if(Input.GetButton ("Jump")){
 				if(camera4D.squintFactor <= THRESH_SQUINT){
-					camera4D.squintFactor = Mathf.Min(camera4D.squintFactor + 3f, THRESH_SQUINT);				}
+					camera4D.squintFactor = Mathf.Min(camera4D.squintFactor + 3.0f, THRESH_SQUINT);				}
 			} else {
 				if(camera4D.squintFactor >= 0f){
 					camera4D.squintFactor = Mathf.Max(camera4D.squintFactor - 0.5f, 0f);
@@ -51,7 +51,7 @@ namespace Stereoscopic4D.Demo {
 			// Change squintFactor
 			if(lIndex > THRESH_SQUINT_CTRL){
 				if(camera4D.squintFactor <= THRESH_SQUINT){
-					camera4D.squintFactor += 3f * lIndex;
+					camera4D.squintFactor += 3.0f * lIndex;
 				}
 			}else{
 				if(camera4D.squintFactor >= 0f){
