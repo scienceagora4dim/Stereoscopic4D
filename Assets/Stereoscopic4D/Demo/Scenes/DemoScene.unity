@@ -260,6 +260,10 @@ Prefab:
       propertyPath: m_BackGroundColor.b
       value: 0.27450982
       objectReference: {fileID: 0}
+    - target: {fileID: 1818819986228258, guid: 277e036d3c9a04dec8d35da9f460d157, type: 2}
+      propertyPath: m_Name
+      value: HyperCameraRig
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 277e036d3c9a04dec8d35da9f460d157, type: 2}
   m_IsPrefabParent: 0

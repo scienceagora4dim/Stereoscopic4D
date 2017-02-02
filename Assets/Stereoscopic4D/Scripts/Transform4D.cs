@@ -4,45 +4,16 @@ using UnityEngine;
 
 namespace Stereoscopic4D {
 
-	/// <summary>
-	/// This class extends GameObject to 4D transform
-	/// </summary>
+	// Transform4D class extends Transform class of UnityEngine
+	// and handles the position, the rotation and the scale of 4D-objects.
+	// All 4D-objects in the scene, including cameras, need to have a Transform4D component.
+	
 	[DisallowMultipleComponent]
 	public class Transform4D : MonoBehaviour {
 
-		/// <summary>
-		/// w position.
-		/// </summary>
+		[Header("Position (W-coordinate)")]
 		public float w = 0.0f;
-
-		[Header("Scale with W")]
-
-		/// <summary>
-		/// The scale w.
-		/// </summary>
-		public float scaleW = 1.0f;
-
-		[Header("Rotation with W")]
-
-		/// <summary>
-		/// The XZ rotation.
-		/// </summary>
-		public float xz = 0.0f;
-
-		/// <summary>
-		/// The YZ rotation.
-		/// </summary>
-		public float yz = 0.0f;
-
-		/// <summary>
-		/// The XY rotation.
-		/// </summary>
-		public float xy = 0.0f;
-
-		/// <summary>
-		/// Gets or sets the 4D position.
-		/// </summary>
-		/// <value>The 4D position.</value>
+		// Accessor	
 		public Vector4 position {
 			get {
 				Vector3 pos = transform.position;
@@ -54,35 +25,19 @@ namespace Stereoscopic4D {
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets the 4D scale.
-		/// </summary>
-		/// <value>The 4D scale.</value>
-		public Vector4 scale {
-			get {
-				Vector3 scale = transform.localScale;
-				return new Vector4 (scale.x, scale.y, scale.z, scaleW);
-			}
-			set {
-				transform.localScale = new Vector3 (value.x, value.y, value.z);
-				scaleW = value.w;
-			}
-		}
-
-		/// <summary>
-		/// Gets the euler angles 3D.
-		/// </summary>
-		/// <value>The euler angles 3D.</value>
+		[Header("Rotation (Axis is orthogonal to W-direction)")]
+		// Axis is XZ, YZ and XY, respectively
+		public float xz = 0.0f;
+		public float yz = 0.0f;
+		public float xy = 0.0f;
+		// Accessor	
+		// Getter for the Euler angles of 3D-rotation
 		public Vector3 eulerAngles3D {
 			get {
 				return transform.localRotation.eulerAngles;
 			}
 		}
-
-		/// <summary>
-		/// Gets or sets the world rotation with w.
-		/// </summary>
-		/// <value>The local rotation with w.</value>
+		// Getter and Setter for the 4D-rotation whose axis is orthogonal to W-direction
 		public Quaternion rotationWithW {
 			get {
 				return Quaternion.Euler (xz, yz, xy);
@@ -95,6 +50,21 @@ namespace Stereoscopic4D {
 			}
 		}
 
+
+		[Header("Scale (W-coordinate)")]
+		public float scaleW = 1.0f;
+		// Accessor
+		public Vector4 scale {
+			get {
+				Vector3 scale = transform.localScale;
+				return new Vector4 (scale.x, scale.y, scale.z, scaleW);
+			}
+			set {
+				transform.localScale = new Vector3 (value.x, value.y, value.z);
+				scaleW = value.w;
+			}
+		}
+		
 		/// <summary>
 		/// 4D Rotate.
 		/// </summary>

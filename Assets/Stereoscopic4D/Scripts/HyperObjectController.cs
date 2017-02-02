@@ -13,14 +13,13 @@ namespace Stereoscopic4D {
 		DisallowMultipleComponent]
 	public class HyperObjectController : MonoBehaviour {
 
-		/// <summary>
-		/// The hyper object JSON data.
-		/// </summary>
+		// The hyper-object JSON data:
+		// Read the object name, vertices, facets, etc.
+		// from a JSON format file.
 		public TextAsset hyperObjectJson;
 
-		/// <summary>
-		/// The hyper object material.
-		/// </summary>
+		// The hyper-object material:
+		//
 		public Material hyperObjectMaterial;
 
 		// loaded object.
