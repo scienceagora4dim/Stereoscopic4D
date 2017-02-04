@@ -171,6 +171,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4345424770903418, guid: d8ff5c7e52b12d941bd89e0c6a6e78a2,
     type: 2}
   m_PrefabInternal: {fileID: 1449981716}
+--- !u!114 &370164931 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114727369949187234, guid: d8ff5c7e52b12d941bd89e0c6a6e78a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1449981716}
+  m_Script: {fileID: 11500000, guid: 3fde0f66aba8f4516bfb91dfb9522f81, type: 3}
 --- !u!1001 &491710574
 Prefab:
   m_ObjectHideFlags: 0
@@ -255,7 +261,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4092607103036454, guid: d65055023b0b049ad9759e85e4ae670c, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d65055023b0b049ad9759e85e4ae670c, type: 2}
@@ -303,7 +309,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4345424770903418, guid: d8ff5c7e52b12d941bd89e0c6a6e78a2, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8ff5c7e52b12d941bd89e0c6a6e78a2, type: 2}
@@ -340,8 +346,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5596380}
-  - {fileID: 1781223257}
   - {fileID: 370164929}
+  - {fileID: 1781223257}
   - {fileID: 491710575}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -357,8 +363,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb729240e503450b98f0247eb5863ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera4D: {fileID: 243503521}
-  cameraTransform: {fileID: 1327604949}
-  targetObject: {fileID: 353201570}
+  inputDevice: 0
+  inputMode: 0
   RTouch: 2
   LTouch: 1
+  camera4D: {fileID: 243503521}
+  cameraTransform: {fileID: 1327604949}
+  targetObjects:
+  - {fileID: 353201570}
+  - {fileID: 370164931}
+  target: 0
