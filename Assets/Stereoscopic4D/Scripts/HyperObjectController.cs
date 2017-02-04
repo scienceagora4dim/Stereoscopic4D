@@ -83,36 +83,37 @@ namespace Stereoscopic4D {
 		// before render setting up.
 		void OnWillRenderObject() {
 			// setting up object transform.
-			hyperObjectMaterial.SetVector (positionId_, transform4D_.position);
-			hyperObjectMaterial.SetVector (scaleId_, transform4D_.scale);
-			hyperObjectMaterial.SetVector (rotationId_, transform4D_.eulerAngles3D);
-			hyperObjectMaterial.SetFloat (rotationXZ_, transform4D_.xz);
-			hyperObjectMaterial.SetFloat (rotationYZ_, transform4D_.yz);
-			hyperObjectMaterial.SetFloat (rotationXY_, transform4D_.xy);
+			Material material = GetComponent<MeshRenderer>().material;
+			material.SetVector (positionId_, transform4D_.position);
+			material.SetVector (scaleId_, transform4D_.scale);
+			material.SetVector (rotationId_, transform4D_.eulerAngles3D);
+			material.SetFloat (rotationXZ_, transform4D_.xz);
+			material.SetFloat (rotationYZ_, transform4D_.yz);
+			material.SetFloat (rotationXY_, transform4D_.xy);
 
 			// setting up transform by camera view.
 			Camera cam = Camera.current;
 			Transform4D camTransform4D = cam.gameObject.GetComponent<Transform4D> ();
 			if (camTransform4D != null) {
-				hyperObjectMaterial.SetVector (cameraPositionId_, camTransform4D.position);
-				hyperObjectMaterial.SetVector (cameraRotationId_, camTransform4D.eulerAngles3D);
-				hyperObjectMaterial.SetFloat (cameraRotationXZ_, camTransform4D.xz);
-				hyperObjectMaterial.SetFloat (cameraRotationYZ_, camTransform4D.yz);
-				hyperObjectMaterial.SetFloat (cameraRotationXY_, camTransform4D.xy);
+				material.SetVector (cameraPositionId_, camTransform4D.position);
+				material.SetVector (cameraRotationId_, camTransform4D.eulerAngles3D);
+				material.SetFloat (cameraRotationXZ_, camTransform4D.xz);
+				material.SetFloat (cameraRotationYZ_, camTransform4D.yz);
+				material.SetFloat (cameraRotationXY_, camTransform4D.xy);
 			} else {
-				hyperObjectMaterial.SetVector (cameraPositionId_, cam.transform.position);
-				hyperObjectMaterial.SetVector (cameraRotationId_, cam.transform.localRotation.eulerAngles);
-				hyperObjectMaterial.SetFloat (cameraRotationXZ_, 0.0f);
-				hyperObjectMaterial.SetFloat (cameraRotationYZ_, 0.0f);
-				hyperObjectMaterial.SetFloat (cameraRotationXY_, 0.0f);
+				material.SetVector (cameraPositionId_, cam.transform.position);
+				material.SetVector (cameraRotationId_, cam.transform.localRotation.eulerAngles);
+				material.SetFloat (cameraRotationXZ_, 0.0f);
+				material.SetFloat (cameraRotationYZ_, 0.0f);
+				material.SetFloat (cameraRotationXY_, 0.0f);
 			}
 
 			// Stereoscopic attributes.
 			bool left = (StereoTargetEyeMask.Left == cam.stereoTargetEye);
 			float stereoSeparation = left ? -cam.stereoSeparation : cam.stereoSeparation;
 			float stereoConvergence = cam.stereoConvergence;
-			hyperObjectMaterial.SetFloat (cameraStereoSeparation_, stereoSeparation);
-			hyperObjectMaterial.SetFloat (cameraStereoConvergence_, stereoConvergence);
+			material.SetFloat (cameraStereoSeparation_, stereoSeparation);
+			material.SetFloat (cameraStereoConvergence_, stereoConvergence);
 
 			Camera4DController cam4d = cam.gameObject.GetComponentInParent<Camera4DController> ();
 			float squint = 0.0f;
@@ -121,8 +122,8 @@ namespace Stereoscopic4D {
 				squint = cam4d.squintFactor;
 				enable4DStereo = cam4d.enable4DStereoscopic;
 			}
-			hyperObjectMaterial.SetFloat (cameraSquint_, squint);
-			hyperObjectMaterial.SetInt (enable4DStereo_, enable4DStereo ? 1 : 0);
+			material.SetFloat (cameraSquint_, squint);
+			material.SetInt (enable4DStereo_, enable4DStereo ? 1 : 0);
 		}
 	}
 }
