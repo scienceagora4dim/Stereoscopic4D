@@ -7,7 +7,7 @@ namespace Stereoscopic4D {
 	/// <summary>
 	/// Camera 4D controller.
 	/// </summary>
-	public class Camera4DController : MonoBehaviour {
+	public class Camera4D : MonoBehaviour {
 
 		/// <summary>
 		/// The enable4 D stereoscopic flag.

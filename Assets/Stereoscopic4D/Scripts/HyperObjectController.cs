@@ -13,14 +13,13 @@ namespace Stereoscopic4D {
 		DisallowMultipleComponent]
 	public class HyperObjectController : MonoBehaviour {
 
-		/// <summary>
-		/// The hyper object JSON data.
-		/// </summary>
+		// The hyper-object JSON data:
+		// Read the object name, vertices, facets, etc.
+		// from a JSON format file.
 		public TextAsset hyperObjectJson;
 
-		/// <summary>
-		/// The hyper object material.
-		/// </summary>
+		// The hyper-object material:
+		//
 		public Material hyperObjectMaterial;
 
 		// loaded object.
@@ -115,7 +114,7 @@ namespace Stereoscopic4D {
 			material.SetFloat (cameraStereoSeparation_, stereoSeparation);
 			material.SetFloat (cameraStereoConvergence_, stereoConvergence);
 
-			Camera4DController cam4d = cam.gameObject.GetComponentInParent<Camera4DController> ();
+			Camera4D cam4d = cam.gameObject.GetComponentInParent<Camera4D> ();
 			float squint = 0.0f;
 			bool enable4DStereo = false;
 			if (cam4d != null) {
